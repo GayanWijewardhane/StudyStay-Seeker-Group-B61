@@ -64,7 +64,7 @@ const handleSubmit = async (e) => {
 
       <div className='flex justify-center mt-6'>
         <p className='text-gray-600'>Already have an account? </p>
-        <Link to="/sign-in" className='text-blue-500 hover:underline'>Sign in</Link>
+        <Link to="/sign-in" className='text-blue-500 hover:underline ml-2'>Sign in</Link>
       </div>
       {error && <p className='text-red-400 mt-5'>{error}</p>}
     </div>
