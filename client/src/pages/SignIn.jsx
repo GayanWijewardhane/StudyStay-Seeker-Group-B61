@@ -12,6 +12,8 @@ export default function SignIn() {
  const {loading,error} = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  
   const handleChange =(e) =>
 {
 setFormData(
@@ -53,7 +55,7 @@ const handleSubmit = async (e) => {
       <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         
-        <input type='text' placeholder='Email' className='border rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500' id='email' 
+        <input type='email' placeholder='Email' className='border rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500' id='email' 
         onChange={handleChange} />
         <input type='password' placeholder='Password' className='border rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500' id='password' 
         onChange={handleChange} />
