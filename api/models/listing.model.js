@@ -17,7 +17,7 @@ const listingSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    keyMoneyPrice: {
+    sharingPrice: {
         type: Number,
         required: true,
     },
@@ -41,7 +41,7 @@ const listingSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    offer:{
+    sharing:{
         type: Boolean,
         default: false,
     },
