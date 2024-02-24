@@ -37,13 +37,25 @@ const listingSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
+    kitchen: {
+        type: Boolean,
+        required: true,
+    },
     type: {
+        type: String,
+        required: true,
+    },
+    accotype: {
         type: String,
         required: true,
     },
     sharing:{
         type: Boolean,
         default: false,
+    },
+    for: {
+        type: String,
+        required: true,
     },
     imageUrls: {
         type: Array,
