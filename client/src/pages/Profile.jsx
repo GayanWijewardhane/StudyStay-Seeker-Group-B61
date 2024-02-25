@@ -2,7 +2,8 @@ import { useSelector } from "react-redux";
 import { useRef, useState, useEffect } from "react";
 import { getDownloadURL, uploadBytesResumable, getStorage, ref } from "firebase/storage";
 import { app } from "../firebase";
-import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserStart } from '../redux/user/userslice';
+import { updateUserStart, updateUserSuccess, updateUserFailure,
+ deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserStart } from '../redux/user/userslice';
 import { useDispatch } from "react-redux";
 import { Link} from 'react-router-dom';
 
@@ -118,7 +119,7 @@ export default function Profile() {
   const handleShowListings=async()=>{
     try {
       setShowListingError(false);
-     const res =await fetch (`api/user/listings/${currentUser._id}`);
+     const res =await fetch (`/api/user/listings/${currentUser._id}`);
      const data = await res.json();
      if (data.success=== false) {
        setShowListingError(true);
@@ -131,7 +132,7 @@ export default function Profile() {
   };
   const handleListingDelete = async (listingId) => {
     try {
-      const res = await fetch (`api/listing/delete/${listingId}`,{
+      const res = await fetch (`/api/listing/delete/${listingId}`,{
         method: 'DELETE',
       });
       const data = await res.json();
@@ -217,7 +218,7 @@ export default function Profile() {
    
    
     {userListings && 
-    userListings.length > 0 &&
+    userListings.length > 0 && (
     <div className="flex flex-col gap-4">
       <h1 className="text-center mt-7 text-2xl font-semibold">My Listings</h1>
     {userListings.map((listing)=>( 
@@ -240,14 +241,18 @@ export default function Profile() {
         </Link>
 
       <div className="flex flex-col items-center">
-      <button onClick={() => handleListingDelete(listing._id)} className="text-red-600 uppercase">Delete</button>
+      <button onClick={() => handleListingDelete(listing._id)}
+       className="text-red-600 uppercase">Delete</button>
+      <Link to={`/update-listing/${listing._id}`}>
       <button className="text-green-600 uppercase">Edit</button>
+      </Link>
       </div>
       </div>
     
     
     ))}
-    </div>}
+    </div>
+    )}
    </div>
   );
 }
