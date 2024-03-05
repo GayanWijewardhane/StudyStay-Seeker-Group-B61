@@ -130,13 +130,13 @@ export default function Listing() {
       {listing.furnished ? 'Furnished' : 'Unfurnished'}
     </li>
     <li className="flex items-center gap-1 whitespace-nowrap">
-      {listing.for === 'male' && (
+      {listing.forGender === 'male' && (
         <>
           <FaMale className="text-lg" />
           <span>Male</span>
         </>
       )}
-      {listing.for === 'female' && (
+      {listing.forGender === 'female' && (
         <>
           <FaFemale className="text-lg" />
           <span>Female</span>

@@ -18,7 +18,7 @@ export default function CreateListing() {
   address: '',
   type: 'rent',
   accotype: 'hostel',
-  for:'male',
+  forGender:'male',
   bedrooms: 1,
   bathrooms: 1,
   kitchen: false,
@@ -119,7 +119,7 @@ export default function CreateListing() {
     else if(e.target.id==='male' || e.target.id==='female'){
       setFormData({
         ...formData,
-        for: e.target.id,
+        forGender: e.target.id,
       });
     }
     else if(e.target.id==='hostel' || e.target.id==='room' || e.target.id ==='house'){
@@ -230,12 +230,12 @@ export default function CreateListing() {
                 </div>
                 <div className='flex gap-2'>
                     <input type='checkbox' id='male' className='w-4' onChange={handleChange}
-                     checked={formData.for==='male'}/>
+                     checked={formData.forGender==='male'}/>
                     <span>Male</span>  
                 </div>
                 <div className='flex gap-2'>
                     <input type='checkbox' id='female' className='w-4' onChange={handleChange}
-                     checked={formData.for==='female'}/>
+                     checked={formData.forGender==='female'}/>
                     <span>Female</span>
                 </div>  
                 <div className='flex gap-2'>

@@ -53,7 +53,7 @@ const listingSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    for: {
+    forGender: {
         type: String,
         required: true,
     },
