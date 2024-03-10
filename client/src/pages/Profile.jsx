@@ -214,7 +214,7 @@ export default function Profile() {
       <p className="text-red-500 mt-5">{error ? error : ''}</p>
       <p className="text-green-500 mt-5">{updateSuccess ? 'Profile updated successfully' : ''}</p>
     <button onClick={handleShowListings} className="text-green-500 w-full">Show My Listings</button>
-    <p className="text-red-700 mt-3 ">{showListingError ? 'Error in showing listings': ''}</p>   
+    <p className="text-red-700 mt-3 ">{showListingError ? 'Error Sign in again to see your listings': ''}</p>   
    
    
     {userListings && 

@@ -84,10 +84,10 @@ export const getListings = async (req, res, next) => {
         if (accotype === undefined || accotype === 'all'){ 
             accotype = {$in: ['house', 'room', 'hostel']};
         }
-        let forGender = req.query.forGender;
+       /* let forGender = req.query.forGender;
         if (forGender === undefined || forGender === 'all'){
             forGender = {$in: ['male', 'female']};
-        }
+        }*/
         const searchTerm = req.query.searchTerm || '';
 
         const sort = req.query.sort || 'createdAt';
@@ -97,7 +97,7 @@ export const getListings = async (req, res, next) => {
             name:{$regex: searchTerm, $options: 'i'},
             type,
             accotype,
-            forGender,
+           // forGender,
             sharing,
             furnished,
             kitchen,

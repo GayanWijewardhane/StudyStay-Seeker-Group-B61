@@ -1,10 +1,28 @@
 import { FaBed, FaSearch } from 'react-icons/fa';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import {useSelector} from 'react-redux'
+import { useEffect, useState } from 'react';
 
 
 export default function Header() {
   const {currentUser} = useSelector((state) => state.user);
+  const [SearchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('searchTerm', SearchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get('searchTerm');
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+
+  },[location.search]);
   //console.log(currentUser);
 
   return (
@@ -12,16 +30,22 @@ export default function Header() {
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
       <Link to="/">
           <h1 className="font-bold text-xl flex flex-wrap">
-            <FaBed className="text-slate-600  mt-1.5 mr-1" />
+          <img src="/assets/Logo.jpg" alt="Logo" className="h-6 w-6 mr-1" />
             <span className="text-slate-600 ">StudyStay </span>
             <span className='text-slate-800 '>Seeker </span>
           </h1>
         </Link>
 
 
-        <form className='bg-slate-100 p-3 rounded-lg flex items-center'>
-          <input type='text' placeholder='Search....' className='bg-transparent focus:outline-none w-24 sm:w-64'/>
+        <form onSubmit={handleSubmit}className='bg-slate-100 p-3 rounded-lg flex items-center'>
+          <input type='text' placeholder='Search....'
+           className='bg-transparent focus:outline-none w-24 sm:w-64'
+           value={SearchTerm}
+           onChange={(e) => setSearchTerm(e.target.value)}
+           />
+           <button>
           <FaSearch className='text-slate-600' />
+           </button>
         </form>
 
         <ul className='flex gap-4'>
